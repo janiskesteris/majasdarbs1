@@ -2,6 +2,7 @@
 #include <cmath>
 
 
+//tev iespejams nemaz nevajag visus parametrus nodot pie objekta izveides konstruktora bet atstat tuksus jo ievade notiek tapad manuali caur addInfo;
 kontaktinformacija::kontaktinformacija(string nosaukums, string valsts, string pilseta, string novads, string pagasts, string iela, int maja, string dzivoklis, string zip, string email, double telefons, double fax, string skype, float GPS_coordinates)
 {
     newnosaukums = nosaukums;
@@ -18,7 +19,9 @@ kontaktinformacija::kontaktinformacija(string nosaukums, string valsts, string p
     newfax = fax;
     newskype = skype;
     newGPS_coordinates = GPS_coordinates;
+    faxTelSkypeCounts = 0;
 }
+
 
 kontaktinformacija::~kontaktinformacija(){}
 
@@ -66,8 +69,8 @@ return newemail;
  return newtelefons;
  }
 
-double kontaktinformacija::getfax() const{
-return newfax;
+double kontaktinformacija::getfax(position) const{ //nolasisanai padod paramateru no kuras masiva pozicijas lasit (paskaties setfax metodi)
+return this->newfax[position]; //vajag parveidod newfax par massiva tipa mainigo
 }
 
 string kontaktinformacija::getskype() const{
@@ -120,10 +123,12 @@ void kontaktinformacija::setzip(string zip)
 void kontaktinformacija::settelefons(double telefons)
 {
     newiela = telefons;
+    this->faxTelSkypeCounts++; //stupid but it will work.
 }
-void kontaktinformacija::setfax(double fax)
+void kontaktinformacija::setfax(double fax, int position) //ievadi vajag veidod nododt 2 parametrus: 1) vertibu, 2)raditaju uz maziva poziciju
 {
-    newfax = fax;
+    this->newfax[position] = fax; //vajag parveidod newfax par massiva tipa mainigo
+    this->faxTelSkypeCounts++; //stupid but it will work.
 }
 void kontaktinformacija::setskype(string skype)
 {
@@ -134,51 +139,37 @@ void kontaktinformacija::setGPS_coordinates(float GPS_coordinates)
     newGPS_coordinates = GPS_coordinates;
 }
 
-void addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
+void kontaktinformacija::addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
 {                           //ja es saprotu pareizi, funkcijai vajadzetu nemt variables no klases kontaktinformacija, bet
-    string nosaukums;       //tas nenotiek, tapec es uztaisiju workarount un defineju variables seit
-	string valsts;
-	string pilseta;
-	string novads;
-	string pagasts;
-	string iela;
-	int maja;
-	string dzivoklis;
-	string zip;
-	string email;
-	double telefons;                        //siem vajadzetu b�t mas�viem, k� to izdar�t?
-    double fax;
-    string skype;
-	float GPS_coordinates;
 	//kontaktinformacija kompanija2;             // https://www.tutorialspoint.com/cplusplus/cpp_classes_objects.htm
 cout << "Ievadiet nosaukumu \n";
-cin >> nosaukums;
+cin >> this->newnosaukums;
 cout << "Ievadiet valsti \n";
-cin >> valsts;
+cin >> this->newvalsts;
 cout << "Ievadiet pilsetu \n";
-cin >> pilseta;
+cin >> this->newpilseta;
 cout << "Ievadiet novadu \n";
-cin >> novads;
+cin >> this->newnovads;
 cout << "Ievadiet pagastu \n";
-cin >> pagasts;
+cin >> this->newpagasts;
 cout << "Ievadiet ielu \n";
-cin >> iela;
+cin >> this->newiela;
 cout << "Ievadiet majas numuru \n";
-cin >> maja;
+cin >> this->newmaja;
 cout << "Ievadiet dzivokla numuru \n";
-cin >> dzivoklis;
+cin >> this->newdzivoklis;
 cout << "Ievadiet pasta indeksu \n";
-cin >> zip;
+cin >> this->newzip;
 cout << "Ievadiet epasta adreses \n";
-cin >> email;
+cin >> this->newemail;
 cout << "Ievadiet telefona numurus \n";
-cin >> telefons;
+cin >> this->newtelefons;
 cout << "Ievadiet faksa numurus \n";
-cin >> fax;
+cin >> this->newfax;
 cout << "Ievadiet skype adresi \n";
-cin >> skype;
+cin >> this->newskype;
 cout << "GPS_coordinates \n";
-cin >> GPS_coordinates;
+cin >> this->newGPS_coordinates;
 
 kontaktinformacija kompanija1 (nosaukums, valsts, pilseta, novads, pagasts, iela, maja, dzivoklis, zip, email, telefons, fax, skype, GPS_coordinates);
 //ja es so objektu rakstu funkcijas sakuma, vins man pie telefona, faksa, skype druka atminas apgabalu adreses
@@ -204,16 +195,16 @@ kontaktinformacija kompanija1 (nosaukums, valsts, pilseta, novads, pagasts, iela
 void displayContacts();
 }
 
-void displayContacts()
+void kontaktinformacija::displayContacts()
 {
    //kontaktinformacija kompanija1;
  //cout << &kompanija1.getemail << endl;*/                      https://www.tutorialspoint.com/cplusplus/cpp_this_pointer.htm
  //return this->email < kompanija1.getemail;                    //k� es varu izvilkt skaitu faksiem un telefoniem, kas pievienoti no user?
-    cout << "Kontaktu skaits: " << endl;
+    cout << "Kontaktu skaits: " << this->faxTelSkypeCounts << endl;
     return;
 }
 
-void displayGPS(/*float GPS_coordinates*/)                      //ari tas pats, kas ar void addinfo() - ja es pievienoju kontaktinformacija::displayGPS, man rada error
+void kontaktinformacija::displayGPS(/*float GPS_coordinates*/)                      //ari tas pats, kas ar void addinfo() - ja es pievienoju kontaktinformacija::displayGPS, man rada error
 {
  float x1, x2, y1, y2;
  //double attalums;
