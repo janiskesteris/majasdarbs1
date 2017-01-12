@@ -134,7 +134,7 @@ void kontaktinformacija::setGPS_coordinates(float GPS_coordinates)
     newGPS_coordinates = GPS_coordinates;
 }
 
-void kontaktinformacija::addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
+void addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
 {                           //ja es saprotu pareizi, funkcijai vajadzetu nemt variables no klases kontaktinformacija, bet
     string nosaukums;       //tas nenotiek, tapec es uztaisiju workarount un defineju variables seit
 	string valsts;
@@ -146,7 +146,7 @@ void kontaktinformacija::addInfo()              //ja es rakstu "void kontaktinfo
 	string dzivoklis;
 	string zip;
 	string email;
-	double telefons;                        //siem vajadzetu bût masîviem, kâ to izdarît?
+	double telefons;                        //siem vajadzetu bï¿½t masï¿½viem, kï¿½ to izdarï¿½t?
     double fax;
     string skype;
 	float GPS_coordinates;
@@ -199,7 +199,7 @@ kontaktinformacija kompanija1 (nosaukums, valsts, pilseta, novads, pagasts, iela
 "GPS: " << kompanija1.getGPS_coordinates() << endl;
 
 //vai es varu seit rakstit object2 tapat ka kompanija 1?                https://www.tutorialspoint.com/cplusplus/cpp_classes_objects.htm
-//kontaktinformacija kompanija2 (nosaukums, valsts, pilseta, novads, pagasts, iela, maja, dzivoklis, zip, email, telefons, fax, skype, GPS_coordinates);                            //kâ var izveidot nâkamo object?
+//kontaktinformacija kompanija2 (nosaukums, valsts, pilseta, novads, pagasts, iela, maja, dzivoklis, zip, email, telefons, fax, skype, GPS_coordinates);                            //kï¿½ var izveidot nï¿½kamo object?
 
 void displayContacts();
 }
@@ -208,7 +208,7 @@ void displayContacts()
 {
    //kontaktinformacija kompanija1;
  //cout << &kompanija1.getemail << endl;*/                      https://www.tutorialspoint.com/cplusplus/cpp_this_pointer.htm
- //return this->email < kompanija1.getemail;                    //kâ es varu izvilkt skaitu faksiem un telefoniem, kas pievienoti no user?
+ //return this->email < kompanija1.getemail;                    //kï¿½ es varu izvilkt skaitu faksiem un telefoniem, kas pievienoti no user?
     cout << "Kontaktu skaits: " << endl;
     return;
 }
