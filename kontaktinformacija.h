@@ -8,7 +8,9 @@ using namespace std;
 class kontaktinformacija
 {
   public:
-        kontaktinformacija(string, string, string, string, string, string, int, string, string, string, double, double, string, float);
+    kontaktinformacija();
+
+    kontaktinformacija(string, string, string, string, string, string, int, string, string, string, double, double, string, float);
 
 
         string getnosaukums();                //atgriez kompanijas nosaukumu
@@ -25,7 +27,7 @@ class kontaktinformacija
         double getfax () const;                 //bet tas nestrada, jo te ir konstante. es isti nesaprotu, ka savienot konstanti ar masivu
         string getskype () const;               //
         float getGPS_coordinates ();
-        //float displayGPS();
+        void displayGPS();
 
 
 ~kontaktinformacija();
