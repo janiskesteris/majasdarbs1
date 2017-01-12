@@ -2,6 +2,7 @@
 #include <cmath>
 
 
+//tev iespejams nemaz nevajag visus parametrus nodot pie objekta izveides konstruktora bet atstat tuksus jo ievade notiek tapad manuali caur addInfo;
 kontaktinformacija::kontaktinformacija(string nosaukums, string valsts, string pilseta, string novads, string pagasts, string iela, int maja, string dzivoklis, string zip, string email, double telefons, double fax, string skype, float GPS_coordinates)
 {
     newnosaukums = nosaukums;
@@ -18,6 +19,7 @@ kontaktinformacija::kontaktinformacija(string nosaukums, string valsts, string p
     newfax = fax;
     newskype = skype;
     newGPS_coordinates = GPS_coordinates;
+    faxTelSkypeCounts = 0;
 }
 
 
@@ -67,8 +69,8 @@ return newemail;
  return newtelefons;
  }
 
-double kontaktinformacija::getfax() const{
-return newfax;
+double kontaktinformacija::getfax(position) const{ //nolasisanai padod paramateru no kuras masiva pozicijas lasit (paskaties setfax metodi)
+return this->newfax[position]; //vajag parveidod newfax par massiva tipa mainigo
 }
 
 string kontaktinformacija::getskype() const{
@@ -121,10 +123,12 @@ void kontaktinformacija::setzip(string zip)
 void kontaktinformacija::settelefons(double telefons)
 {
     newiela = telefons;
+    this->faxTelSkypeCounts++; //stupid but it will work.
 }
-void kontaktinformacija::setfax(double fax)
+void kontaktinformacija::setfax(double fax, int position) //ievadi vajag veidod nododt 2 parametrus: 1) vertibu, 2)raditaju uz maziva poziciju
 {
-    newfax = fax;
+    this->newfax[position] = fax; //vajag parveidod newfax par massiva tipa mainigo
+    this->faxTelSkypeCounts++; //stupid but it will work.
 }
 void kontaktinformacija::setskype(string skype)
 {
@@ -196,7 +200,7 @@ void kontaktinformacija::displayContacts()
    //kontaktinformacija kompanija1;
  //cout << &kompanija1.getemail << endl;*/                      https://www.tutorialspoint.com/cplusplus/cpp_this_pointer.htm
  //return this->email < kompanija1.getemail;                    //k� es varu izvilkt skaitu faksiem un telefoniem, kas pievienoti no user?
-    cout << "Kontaktu skaits: " << endl;
+    cout << "Kontaktu skaits: " << this->faxTelSkypeCounts << endl;
     return;
 }
 
