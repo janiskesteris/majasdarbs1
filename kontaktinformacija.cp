@@ -134,7 +134,7 @@ void kontaktinformacija::setGPS_coordinates(float GPS_coordinates)
     newGPS_coordinates = GPS_coordinates;
 }
 
-void addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
+void kontaktinformacija::addInfo()              //ja es rakstu "void kontaktinformacija::addInfo()", man dod error "Id returned 1 exit status"
 {                           //ja es saprotu pareizi, funkcijai vajadzetu nemt variables no klases kontaktinformacija, bet
     string nosaukums;       //tas nenotiek, tapec es uztaisiju workarount un defineju variables seit
 	string valsts;
